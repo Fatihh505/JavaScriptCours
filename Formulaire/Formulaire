@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <link rel="stylesheet" href="Formulaire.css">
+    <script src="script.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire Esthétique</title>
+  <style>
+    
+    /*------------------------------------------------------------------Styles du formulaire-------------------------------------------------------------------------- */
+    body {
+      font-family: Arial, sans-serif; 
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /*----------------------------------------------------------Ce que contiendra le formulaire------------------------------------------------------------------------ */
+    .form-container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /*-----------------------------------------------------------------Titres et le textes ------------------------------------------------------------------------------*/
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /*-------------------------------------------------------------------Champs de saisie------------------------------------------------------------------------------*/
+    input[type="text"], 
+    input[type="email"], 
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    /*------------------------------------------------------------------Bouton Envoyer-------------------------------------------------------------------------------- */
+    button {
+      width: 100%;
+      padding: 10px 15px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /*------------------------------------------------------Footer ( bas de la page )--------------------------------------------------------------------------*/
+    .form-footer {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container"> <!-- Une balise qui enveloppe tout le formulaire pour permettre une mise en page assez structurée -->
+    <h1>Formulaire</h1>  
+    <form action="#" method="post"> <!-- Définit où les données seront envoyées après le clic sur "Envoyer". Le # nous montre qu il n y aura pas de traitement reeelemnt prevus -->
+      <label for="name">Nom :</label> <!-- Associe un texte descriptif au champ -->
+      <input type="text" id="name" name="name" placeholder="Entrez votre nom" required> <!-- Champ pour entrer: du texte-->
+
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="email" placeholder="Entrez votre email" required> <!-- Champ pour entrer: adresse email-->
+
+      <label for="message">Message :</label>
+      <textarea id="message" name="message" rows="4" placeholder="Écrivez votre message" required></textarea> <!-- Texte affiché à l'intérieur du champ avant que l'utilisateur commence à écrire. Et requierd sert a l'obligation du remplissage 
+      -->
+
+      <button type="submit">Envoyer</button> <!-- Permet d'envoyer le formulaire-->
+    </form>
+    <div class="form-footer"> <!-- Footeur = bas de la page-->
+      Vos données sont en sécurité et ne seront pas partagées.
+    </div>
+  </div>
+  <footer>
+<!-------------------------------------------------------------------- Tabs --------------------------------------------------------------------------->
+  <ul> <!-- Crée une liste qui sera organisé qui contient les items avec des onglets-->
+    <li class="tabmenu1">Menu 1</li> <!-- (<li) represente les differents onglets, dans notre cas il s'agira des Menus-->
+    <li class="tabmenu2">Menu 2</li>
+    <li class="tabmenu3">Menu 3</li>
+  </ul>
+  
+  <div id="contenu1" class="hide">Contenu du menu 1</div> <!-- (hide) masque des cotenus. Pour cela il faut le liee a un dossier CSS avec (display none) pour par la suite les cacher-->
+  <div class="hide">Contenu du menu 2</div>
+  <div class="hide">Contenu du menu 3</div>
+
+
+
+  <!-------------------------------------------------------------------- Mode Sombre --------------------------------------------------------------------------->
+  <footer>
+    <!-- HTML -->
+    <button id="darkModeToggle">🌓 Mode Sombre</button> <!-- (darkModeToggle) permet de basculer d un mode a l'autre-->
+    
+    <!-- CSS -->
+    <style>
+    body {
+        transition: background-color 0.3s, color 0.3s; /* Rend la transition un peu plus fluide avec une transition legere pour le background-color et color */
+    }
+    
+    body.dark-mode { /* Définit les styles du mode sombre : arrière-plan sombre et texte clair. */
+        background-color: #333;
+        color: #fff;
+    }
+    
+    #darkModeToggle {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #555;
+        color: white;
+    }
+    </style>
+    
+    <!-- JavaScript -->
+    <script>
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    
+    // Vérifie si le mode sombre était activé précédemment
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
+    
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Souvenir du choix de l'utilisateur
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            localStorage.setItem('darkMode', null);
+        }
+    }); 
+    // Mode sombre activé :L'utilisateur clique sur le bouton.
+    // JavaScript applique la classe dark-mode.
+    // Les styles associés à dark-mode (dans le CSS) changent l'apparence de la page.
+    // La préférence de l'utilisateur est enregistrée dans (localStorage).
+    // Mode sombre désactivé :L'utilisateur reclique sur le bouton.
+    // JavaScript retire la classe dark-mode.La page revient à ses styles par défaut.
+    // La préférence est effacée de localStorage
+    </script>
+    </footer>
+</body>
+</html>
