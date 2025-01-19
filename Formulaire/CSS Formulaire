@@ -1,0 +1,11 @@
+.active {
+    font-weight: bold;
+  }
+  
+  .hide {
+    display:none; 
+  }
+  
+  .afficher-contenu {
+    display: block;
+  }
